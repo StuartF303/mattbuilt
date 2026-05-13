@@ -230,19 +230,24 @@ function initContactForm() {
             return;
         }
 
-        // Simulate form submission
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalText = submitBtn.textContent;
         submitBtn.textContent = 'Sending...';
         submitBtn.disabled = true;
 
-        // In production, this would be an actual API call
-        setTimeout(() => {
-            showNotification('Thank you! Your message has been sent. We\'ll be in touch soon.', 'success');
-            form.reset();
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }, 1500);
+        emailjs.sendForm(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, form)
+            .then(() => {
+                showNotification('Thank you! Your message has been sent. We\'ll be in touch soon.', 'success');
+                form.reset();
+            })
+            .catch((err) => {
+                console.error('EmailJS error:', err);
+                showNotification('Sorry, something went wrong. Please email Matt@MattBuilt.co.uk directly.', 'error');
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
     });
 }
 

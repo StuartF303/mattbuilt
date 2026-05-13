@@ -17,6 +17,16 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="./android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="./android-chrome-512x512.png">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // TODO: Replace with your EmailJS Public Key from https://dashboard.emailjs.com/admin/account
+        window.EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+        // TODO: Replace with your EmailJS Service ID (dashboard > Email Services)
+        window.EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+        // TODO: Replace with your EmailJS Template ID (dashboard > Email Templates)
+        window.EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+        emailjs.init({ publicKey: window.EMAILJS_PUBLIC_KEY });
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -48,7 +58,7 @@
             <div class="hero-logo">
                 <img src="./images/logo-full.png" alt="Matt Built - Built for you! Built to last!">
             </div>
-            <p class="hero-subtitle">Bespoke Joinery & Custom Kitchens</p>
+            <p class="hero-subtitle">Bespoke Joinery and Carpentry Services.</p>
             <div class="hero-cta">
                 <a href="#portfolio" class="btn btn-primary">View Our Work</a>
                 <a href="#contact" class="btn btn-secondary">Get a Quote</a>
@@ -70,17 +80,17 @@
                     <div class="about-image-accent"></div>
                 </div>
                 <div class="about-content">
-                    <span class="section-label">About Matt Built</span>
+                    <span class="section-label">About</span>
                     <h2 class="section-title">Craftsmanship You Can Trust</h2>
                     <p class="about-text">
-                        With years of experience in bespoke joinery and custom cabinetry, Matt Built
+                        With 35+ years of experience in bespoke joinery and custom cabinetry, Matt Built
                         delivers exceptional craftsmanship for homes and businesses across the region.
                     </p>
                     <p class="about-text">
                         Every project is approached with meticulous attention to detail, from initial
-                        consultation through to final installation. Whether you're dreaming of a new
-                        kitchen, need custom storage solutions, or want to transform your space with
-                        built-in furniture, we bring your vision to life.
+                        consultation through to final installation. Whether you’re dreaming of a new kitchen, 
+                        custom storage solutions, or want to transform your space, we look forward to bringing
+                         your vision to life.
                     </p>
                     <div class="about-features">
                         <div class="feature">
@@ -131,7 +141,7 @@
             <div class="section-header">
                 <span class="section-label">What We Do</span>
                 <h2 class="section-title">Our Services</h2>
-                <p class="section-description">From concept to completion, we deliver exceptional joinery for every space</p>
+                <p class="section-description">From concept to completion, we are here to deliver high quality results for you.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
@@ -448,7 +458,7 @@
                             </div>
                             <div>
                                 <strong>Phone</strong>
-                                <a href="tel:+441onal">Call for details</a>
+                                <a href="tel:+441onal">07590998782</a>
                             </div>
                         </div>
                         <div class="contact-item">
