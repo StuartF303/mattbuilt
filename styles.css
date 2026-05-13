@@ -312,6 +312,7 @@ button {
 .hero-logo img {
     max-width: 600px;
     width: 90%;
+    height: auto;
     margin: 0 auto var(--spacing-xl);
 }
 
@@ -1018,7 +1019,3 @@ button {
     min-height: 200px;
 }
 
-.hero-logo img {
-    /* Placeholder for logo */
-    min-height: 150px;
-}
