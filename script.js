@@ -92,25 +92,30 @@ function initPortfolioFilter() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const portfolioItems = document.querySelectorAll('.portfolio-item');
 
+    const applyFilter = (filter) => {
+        portfolioItems.forEach(item => {
+            const category = item.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+                item.classList.remove('hidden');
+                item.style.animation = 'fadeIn 0.5s ease forwards';
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    };
+
+    const initialActive = document.querySelector('.filter-btn.active');
+    if (initialActive) {
+        applyFilter(initialActive.getAttribute('data-filter'));
+    }
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Update active button
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
-            const filter = button.getAttribute('data-filter');
-
-            // Filter items with animation
-            portfolioItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-
-                if (filter === 'all' || category === filter) {
-                    item.classList.remove('hidden');
-                    item.style.animation = 'fadeIn 0.5s ease forwards';
-                } else {
-                    item.classList.add('hidden');
-                }
-            });
+            applyFilter(button.getAttribute('data-filter'));
         });
     });
 }

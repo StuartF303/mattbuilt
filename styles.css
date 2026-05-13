@@ -500,6 +500,9 @@ button {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-md);
+    height: 700px;
+    overflow-y: auto;
+    padding-right: var(--spacing-sm);
 }
 
 .portfolio-item {
