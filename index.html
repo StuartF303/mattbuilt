@@ -4,41 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="./">
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: blob: file:; img-src * 'self' data: blob: file: filesystem:;">
-    <title>Matt Built | Bespoke Joinery and Carpentry Services | Built for you! Built to last!</title>
-    <meta name="description" content="Matt Built - Bespoke joinery, custom kitchens, cabinets, and carpentry services. Quality craftsmanship built to last.">
+    <title>Matt Built — Bespoke Joinery & Carpentry · Built for you. Built to last.</title>
+    <meta name="description" content="Matt Built — bespoke joinery, custom kitchens, fitted wardrobes and carpentry. 35+ years of craftsmanship. Built for you. Built to last.">
+
+    <meta property="og:title" content="Matt Built — Bespoke Joinery & Carpentry">
+    <meta property="og:description" content="Custom kitchens, fitted wardrobes, cabinets and carpentry — 35+ years of craftsmanship.">
+    <meta property="og:type" content="website">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="./android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="./android-chrome-512x512.png">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        // TODO: Replace with your EmailJS Public Key from https://dashboard.emailjs.com/admin/account
-        window.EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
-        // TODO: Replace with your EmailJS Service ID (dashboard > Email Services)
-        window.EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-        // TODO: Replace with your EmailJS Template ID (dashboard > Email Templates)
-        window.EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-        emailjs.init({ publicKey: window.EMAILJS_PUBLIC_KEY });
-    </script>
 </head>
-<body>
-    <!-- Navigation -->
+<body data-palette="workshop">
+
+    <!-- ===== Navigation ===== -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#home" class="nav-logo">
+            <a href="#home" class="nav-logo" aria-label="Matt Built — home">
                 <img src="./images/logo.png" alt="Matt Built" class="logo-img">
             </a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
@@ -46,88 +40,89 @@
                 <li><a href="#services" class="nav-link">Services</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                <li><a href="#contact" class="nav-link nav-cta">Get in Touch</a></li>
+                <li><a href="#contact" class="nav-link nav-cta">Get a Quote</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ===== Hero ===== -->
     <section class="hero" id="home">
-        <div class="hero-background"></div>
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-logo">
-                <img src="./images/logo-full.png" alt="Matt Built - Built for you! Built to last!">
-            </div>
-            <p class="hero-subtitle">Bespoke Joinery and Carpentry Services.</p>
+            <div class="hero-mark">Bespoke Joinery · Est. 1989</div>
+            <h1>Built for you.<br><em>Built to last.</em></h1>
+            <p class="hero-sub">
+                Bespoke kitchens, fitted wardrobes and carpentry — designed around your home and made by hand in the workshop.
+            </p>
             <div class="hero-cta">
                 <a href="#portfolio" class="btn btn-primary">View Our Work</a>
-                <a href="#contact" class="btn btn-secondary">Get a Quote</a>
+                <a href="#contact" class="btn btn-ghost">Request a Quote</a>
+            </div>
+            <div class="hero-meta">
+                <div>
+                    <strong>35+</strong>
+                    <span>Years of craft</span>
+                </div>
             </div>
         </div>
         <a href="#about" class="scroll-indicator" aria-label="Scroll down">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
+            <span>Scroll</span>
+            <svg width="14" height="22" viewBox="0 0 14 22" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M7 1v20M1 15l6 6 6-6"/>
             </svg>
         </a>
     </section>
 
-    <!-- About Section -->
+    <!-- ===== About ===== -->
     <section class="section about" id="about">
         <div class="container">
             <div class="about-grid">
-                <div class="about-image">
-                    <img src="./images/about-matt.jpg" alt="Matt at work">
-                    <div class="about-image-accent"></div>
+                <div class="about-image reveal">
+                    <img src="./images/about-matt.jpg" alt="Matt">
+                    <div class="about-image-frame"></div>
                 </div>
-                <div class="about-content">
-                    <span class="section-label">About</span>
-                    <h2 class="section-title">Craftsmanship You Can Trust</h2>
-                    <p class="about-text">
-                        With 35+ years of experience in bespoke joinery and custom cabinetry, Matt Built
-                        delivers exceptional craftsmanship for homes and businesses across the region.
+                <div class="about-content reveal">
+                    <span class="eyebrow">About the Maker</span>
+                    <h2 class="h2">Three decades of hands-on craftsmanship.</h2>
+                    <p class="about-text" style="margin-top: var(--s-lg);">
+                        Matt Built is a one-man workshop run by Matt — a carpenter and joiner with
+                        <strong>35+ years of experience</strong> in bespoke kitchens, fitted furniture
+                        and custom cabinetry. Every project is designed around your space and built by
+                        hand, with no shortcuts.
                     </p>
                     <p class="about-text">
-                        Every project is approached with meticulous attention to detail, from initial
-                        consultation through to final installation. Whether you’re dreaming of a new kitchen, 
-                        custom storage solutions, or want to transform your space, we look forward to bringing
-                         your vision to life.
+                        From the first sketch through to the final hinge, you work with Matt directly —
+                        so what's drawn is what gets made, and what gets made is built to last.
                     </p>
+
                     <div class="about-features">
                         <div class="feature">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                    <polyline points="22 4 12 14.01 9 11.01"/>
-                                </svg>
+                            <div class="feature-num">01</div>
+                            <div class="feature-body">
+                                <strong>Built by hand</strong>
+                                <span>No flat-pack, no shortcuts.</span>
                             </div>
-                            <span>Quality Materials</span>
                         </div>
                         <div class="feature">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                    <polyline points="22 4 12 14.01 9 11.01"/>
-                                </svg>
+                            <div class="feature-num">02</div>
+                            <div class="feature-body">
+                                <strong>Designed with you</strong>
+                                <span>Tailored to your space and brief.</span>
                             </div>
-                            <span>Bespoke Design</span>
                         </div>
                         <div class="feature">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                    <polyline points="22 4 12 14.01 9 11.01"/>
-                                </svg>
+                            <div class="feature-num">03</div>
+                            <div class="feature-body">
+                                <strong>Quality materials</strong>
+                                <span>Solid timber and proper hardware.</span>
                             </div>
-                            <span>Expert Installation</span>
                         </div>
                         <div class="feature">
-                            <div class="feature-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                    <polyline points="22 4 12 14.01 9 11.01"/>
-                                </svg>
+                            <div class="feature-num">04</div>
+                            <div class="feature-body">
+                                <strong>One point of contact</strong>
+                                <span>You speak to the maker, not a salesperson.</span>
                             </div>
-                            <span>Built to Last</span>
                         </div>
                     </div>
                 </div>
@@ -135,261 +130,176 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- ===== Services ===== -->
     <section class="section services" id="services">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">What We Do</span>
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-description">From concept to completion, we are here to deliver high quality results for you.</p>
+            <div class="section-header reveal">
+                <span class="eyebrow">What we make</span>
+                <h2 class="h2">From a single cabinet to the whole kitchen.</h2>
+                <p class="lead">Each piece is designed for the room it lives in. Below, the most common briefs — though if it's made from wood, we can probably help.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="7" height="9"/>
-                            <rect x="14" y="3" width="7" height="5"/>
-                            <rect x="14" y="12" width="7" height="9"/>
-                            <rect x="3" y="16" width="7" height="5"/>
-                        </svg>
-                    </div>
+            <div class="services-grid reveal">
+                <article class="service-card">
+                    <div class="service-num">— 01</div>
                     <h3>Custom Kitchens</h3>
-                    <p>Beautiful, functional kitchens designed and built to your exact specifications. Shaker, contemporary, or traditional styles.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="M12 4v16"/>
-                            <path d="M2 12h20"/>
-                        </svg>
-                    </div>
+                    <p>Shaker, contemporary or traditional — designed for how you cook and built to last decades.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-num">— 02</div>
                     <h3>Fitted Wardrobes</h3>
-                    <p>Maximize your storage with custom-fitted wardrobes and built-in furniture that makes the most of every inch.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="4" y="4" width="16" height="16" rx="2"/>
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M4 12h2"/>
-                            <path d="M18 12h2"/>
-                        </svg>
-                    </div>
-                    <h3>Media & AV Units</h3>
-                    <p>Bespoke entertainment centers and media cabinets with integrated cable management and ventilation.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <path d="M8 21h8"/>
-                            <path d="M12 17v4"/>
-                        </svg>
-                    </div>
+                    <p>Floor-to-ceiling storage that uses every inch of an awkward bedroom alcove.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-num">— 03</div>
+                    <h3>Media &amp; AV Units</h3>
+                    <p>Bespoke entertainment cabinets with cable management and proper ventilation built in.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-num">— 04</div>
                     <h3>Home Offices</h3>
-                    <p>Create the perfect workspace with custom desks, shelving, and storage designed for productivity.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9 22 9 12 15 12 15 22"/>
-                        </svg>
-                    </div>
+                    <p>Built-in desks, shelving and storage for the corner, the alcove or the spare room.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-num">— 05</div>
                     <h3>Garden Buildings</h3>
-                    <p>Quality outbuildings, garden offices, and workshops built with attention to detail and durability.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                    </div>
+                    <p>Garden offices and workshops — fully insulated, finished to interior standards.</p>
+                </article>
+                <article class="service-card">
+                    <div class="service-num">— 06</div>
                     <h3>Bathroom Joinery</h3>
-                    <p>Custom vanity units, storage solutions, and fitted furniture for bathrooms of all sizes.</p>
-                </div>
+                    <p>Vanity units, fitted storage and panelling for bathrooms of every size.</p>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- ===== Portfolio ===== -->
     <section class="section portfolio" id="portfolio">
         <div class="container">
-            <div class="section-header">
-                <span class="section-label">Our Work</span>
-                <h2 class="section-title">Recent Projects</h2>
-                <p class="section-description">Browse our portfolio of completed projects</p>
+            <div class="section-header reveal">
+                <span class="eyebrow">Recent work</span>
+                <h2 class="h2">A selection of finished projects.</h2>
             </div>
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="kitchens">Kitchens</button>
+            <div class="portfolio-filters reveal">
+                <button class="filter-btn active" data-filter="all">All Work</button>
+                <button class="filter-btn" data-filter="kitchens">Kitchens</button>
                 <button class="filter-btn" data-filter="storage">Storage</button>
                 <button class="filter-btn" data-filter="cabinets">Cabinets</button>
                 <button class="filter-btn" data-filter="bathrooms">Bathrooms</button>
-                <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+                <button class="filter-btn" data-filter="outdoor">Garden</button>
             </div>
             <div class="portfolio-grid">
-                <div class="portfolio-item large" data-category="cabinets">
-                    <img src="./images/portfolio/media-cabinet-1.jpg" alt="Custom media cabinet">
+                <div class="portfolio-item large" data-category="kitchens">
+                    <img src="./images/portfolio/kitchen-3.jpg" alt="Modern kitchen with oak beams" loading="lazy">
                     <div class="portfolio-overlay">
-                        <h4>Media Cabinet</h4>
-                        <p>Custom AV unit with ventilation</p>
+                        <h4>Beamed Kitchen</h4>
+                        <p>Shaker units under original oak beams</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="cabinets">
-                    <img src="./images/portfolio/sideboard-1.jpg" alt="Modern sideboard">
-                    <div class="portfolio-overlay">
-                        <h4>Bespoke Sideboard</h4>
-                        <p>Contemporary storage solution</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="cabinets">
-                    <img src="./images/portfolio/media-cabinet-2.jpg" alt="Media units pair">
-                    <div class="portfolio-overlay">
-                        <h4>Media Units</h4>
-                        <p>Matching AV cabinets</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="storage">
-                    <img src="./images/portfolio/wardrobe-1.jpg" alt="Fitted wardrobe">
+                <div class="portfolio-item tall" data-category="storage">
+                    <img src="./images/portfolio/wardrobe-1.jpg" alt="Fitted birch ply wardrobe" loading="lazy">
                     <div class="portfolio-overlay">
                         <h4>Fitted Wardrobe</h4>
                         <p>Birch ply with integrated shelving</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="storage">
-                    <img src="./images/portfolio/shelving-1.jpg" alt="Custom shelving">
-                    <div class="portfolio-overlay">
-                        <h4>Storage System</h4>
-                        <p>White cubby shelving unit</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="storage">
-                    <img src="./images/portfolio/workspace-1.jpg" alt="Workshop storage">
-                    <div class="portfolio-overlay">
-                        <h4>Workshop Storage</h4>
-                        <p>Stainless steel top workbench</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="cabinets">
-                    <img src="./images/portfolio/home-office-1.jpg" alt="Under stairs desk">
-                    <div class="portfolio-overlay">
-                        <h4>Home Office</h4>
-                        <p>Under-stair workspace</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="cabinets">
-                    <img src="./images/portfolio/commercial-1.jpg" alt="Commercial display">
-                    <div class="portfolio-overlay">
-                        <h4>Commercial Install</h4>
-                        <p>Display screen mounting</p>
-                    </div>
-                </div>
-                <div class="portfolio-item large" data-category="kitchens">
-                    <img src="./images/portfolio/kitchen-1.jpg" alt="Shaker kitchen">
+                <div class="portfolio-item" data-category="kitchens">
+                    <img src="./images/portfolio/kitchen-1.jpg" alt="Sage green shaker kitchen" loading="lazy">
                     <div class="portfolio-overlay">
                         <h4>Shaker Kitchen</h4>
-                        <p>Grey cabinets with oak worktop</p>
+                        <p>Sage cabinets, oak worktop</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="kitchens">
-                    <img src="./images/portfolio/kitchen-2.jpg" alt="Cream kitchen dresser">
+                    <img src="./images/portfolio/kitchen-2.jpg" alt="Cream kitchen dresser" loading="lazy">
                     <div class="portfolio-overlay">
                         <h4>Kitchen Dresser</h4>
                         <p>Traditional cream unit</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="kitchens">
-                    <img src="./images/portfolio/kitchen-3.jpg" alt="Modern kitchen">
+                <div class="portfolio-item" data-category="storage">
+                    <img src="./images/portfolio/shelving-1.jpg" alt="Custom cubby shelving" loading="lazy">
                     <div class="portfolio-overlay">
-                        <h4>Modern Kitchen</h4>
-                        <p>Contemporary design with beams</p>
+                        <h4>Storage System</h4>
+                        <p>White cubby shelving</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="bathrooms">
-                    <img src="./images/portfolio/bathroom-1.jpg" alt="Marble bathroom">
-                    <div class="portfolio-overlay">
-                        <h4>Bathroom Renovation</h4>
-                        <p>Marble tiling installation</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="bathrooms">
-                    <img src="./images/portfolio/bathroom-2.jpg" alt="Modern shower room">
-                    <div class="portfolio-overlay">
-                        <h4>Shower Room</h4>
-                        <p>Subway tile with green accents</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="bathrooms">
-                    <img src="./images/portfolio/bathroom-3.jpg" alt="Pink bathroom">
-                    <div class="portfolio-overlay">
-                        <h4>Contemporary Bathroom</h4>
-                        <p>Pink tiles with green basin</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="bathrooms">
-                    <img src="./images/portfolio/bathroom-cabinet-1.jpg" alt="Bathroom cabinet">
-                    <div class="portfolio-overlay">
-                        <h4>Bathroom Cabinet</h4>
-                        <p>Built-in storage solution</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="outdoor">
-                    <img src="./images/portfolio/garden-1.jpg" alt="Garden building">
-                    <div class="portfolio-overlay">
-                        <h4>Garden Building</h4>
-                        <p>Cedar-clad outbuilding</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-category="outdoor">
-                    <img src="./images/portfolio/garden-2.jpg" alt="Garden office">
+                <div class="portfolio-item large" data-category="outdoor">
+                    <img src="./images/portfolio/garden-2.jpg" alt="Garden office" loading="lazy">
                     <div class="portfolio-overlay">
                         <h4>Garden Office</h4>
                         <p>Fully insulated workspace</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="outdoor">
-                    <img src="./images/portfolio/garden-3.jpg" alt="Garden office at night">
+                <div class="portfolio-item" data-category="cabinets">
+                    <img src="./images/portfolio/sideboard-1.jpg" alt="Modern sideboard" loading="lazy">
                     <div class="portfolio-overlay">
-                        <h4>Garden Office</h4>
-                        <p>Evening lighting feature</p>
+                        <h4>Bespoke Sideboard</h4>
+                        <p>Contemporary storage piece</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="cabinets">
+                    <img src="./images/portfolio/home-office-1.jpg" alt="Under-stair home office" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Under-Stair Office</h4>
+                        <p>Built-in desk &amp; storage</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="bathrooms">
+                    <img src="./images/portfolio/bathroom-2.jpg" alt="Shower room with subway tiles" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Shower Room</h4>
+                        <p>Subway tile, green accents</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="bathrooms">
+                    <img src="./images/portfolio/bathroom-3.jpg" alt="Contemporary bathroom" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Contemporary Bathroom</h4>
+                        <p>Pink tile, green basin</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="bathrooms">
+                    <img src="./images/portfolio/bathroom-cabinet-1.jpg" alt="Built-in bathroom cabinet" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Bathroom Cabinet</h4>
+                        <p>Built-in vanity storage</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="outdoor">
+                    <img src="./images/portfolio/garden-1.jpg" alt="Cedar-clad garden building" loading="lazy">
+                    <div class="portfolio-overlay">
+                        <h4>Garden Building</h4>
+                        <p>Cedar-clad outbuilding</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- ===== Testimonials ===== -->
     <section class="section testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">What Clients Say</span>
-                <h2 class="section-title">Testimonials</h2>
+                <span class="eyebrow">In their own words</span>
+                <h2 class="h2">What clients say.</h2>
             </div>
             <div class="testimonials-slider">
                 <div class="testimonial-track" id="testimonial-track">
                     <div class="testimonial-card">
                         <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M11 7.05V12H6v5h5v-4.95c0-2.21.89-4.21 2.34-5.66L11.69 4.73C10.04 5.88 9 7.85 9 10.05V12H4v7h7v-7h3V7.05h-3zM22 7.05V12h-5v5h5v-4.95c0-2.21-.89-4.21-2.34-5.66l1.65-1.66c1.65 1.15 2.69 3.12 2.69 5.32V12h-5v7h7v-7h-3V7.05z"/>
-                                </svg>
-                            </div>
-                            <p>"Matt did an incredible job on our kitchen. From the initial design consultation to the final installation, his attention to detail was outstanding. The quality of craftsmanship exceeded our expectations."</p>
+                            <div class="quote-mark">“</div>
+                            <p>Matt did an incredible job on our kitchen. From the initial design through to the final installation, his attention to detail was outstanding. The quality of craftsmanship exceeded our expectations.</p>
                             <div class="testimonial-author">
-                                <strong>Sarah & James T.</strong>
+                                <strong>Sarah &amp; James T.</strong>
                                 <span>Kitchen Project</span>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M11 7.05V12H6v5h5v-4.95c0-2.21.89-4.21 2.34-5.66L11.69 4.73C10.04 5.88 9 7.85 9 10.05V12H4v7h7v-7h3V7.05h-3zM22 7.05V12h-5v5h5v-4.95c0-2.21-.89-4.21-2.34-5.66l1.65-1.66c1.65 1.15 2.69 3.12 2.69 5.32V12h-5v7h7v-7h-3V7.05z"/>
-                                </svg>
-                            </div>
-                            <p>"We needed custom storage for an awkward space and Matt came up with the perfect solution. The fitted wardrobes have transformed our bedroom. Highly recommend!"</p>
+                            <div class="quote-mark">“</div>
+                            <p>We needed custom storage for an awkward space and Matt came up with the perfect solution. The fitted wardrobes have transformed our bedroom. Highly recommend.</p>
                             <div class="testimonial-author">
                                 <strong>Rachel M.</strong>
                                 <span>Fitted Wardrobes</span>
@@ -398,12 +308,8 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-content">
-                            <div class="quote-icon">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M11 7.05V12H6v5h5v-4.95c0-2.21.89-4.21 2.34-5.66L11.69 4.73C10.04 5.88 9 7.85 9 10.05V12H4v7h7v-7h3V7.05h-3zM22 7.05V12h-5v5h5v-4.95c0-2.21-.89-4.21-2.34-5.66l1.65-1.66c1.65 1.15 2.69 3.12 2.69 5.32V12h-5v7h7v-7h-3V7.05z"/>
-                                </svg>
-                            </div>
-                            <p>"Our garden office is the best investment we've made. Matt built it to an exceptional standard - fully insulated and finished beautifully. It's like having an extra room."</p>
+                            <div class="quote-mark">“</div>
+                            <p>Our garden office is the best investment we've made. Matt built it to an exceptional standard — fully insulated and finished beautifully. It feels like having an extra room.</p>
                             <div class="testimonial-author">
                                 <strong>David P.</strong>
                                 <span>Garden Office</span>
@@ -413,34 +319,41 @@
                 </div>
                 <div class="testimonial-nav">
                     <button class="testimonial-btn prev" id="prev-btn" aria-label="Previous testimonial">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M15 18l-6-6 6-6"/>
-                        </svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
                     </button>
                     <div class="testimonial-dots" id="testimonial-dots"></div>
                     <button class="testimonial-btn next" id="next-btn" aria-label="Next testimonial">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M9 18l6-6-6-6"/>
-                        </svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ===== Contact ===== -->
     <section class="section contact" id="contact">
         <div class="container">
             <div class="contact-grid">
-                <div class="contact-info">
-                    <span class="section-label">Get in Touch</span>
-                    <h2 class="section-title">Let's Discuss Your Project</h2>
-                    <p>Ready to transform your space? Get in touch to discuss your project and receive a free, no-obligation quote.</p>
+                <div class="contact-info reveal">
+                    <span class="eyebrow">Start a project</span>
+                    <h2 class="h2">Let's talk about what you're building.</h2>
+                    <p>Drop a few details about your project and Matt will be in touch — usually within a working day — to talk it through.</p>
 
                     <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <strong>Phone</strong>
+                                <a href="tel:+447590998782">07590 998 782</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                                     <polyline points="22,6 12,13 2,6"/>
                                 </svg>
@@ -452,47 +365,23 @@
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                </svg>
-                            </div>
-                            <div>
-                                <strong>Phone</strong>
-                                <a href="tel:+441onal">07590998782</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
                                     <circle cx="12" cy="10" r="3"/>
                                 </svg>
                             </div>
                             <div>
-                                <strong>Location</strong>
-                                <span>Serving the local area</span>
+                                <strong>Service area</strong>
+                                <span>Cheltenham &amp; Gloucester and surrounding areas</span>
                             </div>
                         </div>
                     </div>
-
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                    </div>
                 </div>
 
-                <div class="contact-form-wrapper">
-                    <form class="contact-form" id="contact-form">
+                <div class="contact-form-wrapper reveal">
+                    <h3>Send a message</h3>
+                    <p>Tell Matt about your project — no obligation, no upsell.</p>
+                    <form class="contact-form" id="contact-form" novalidate>
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" required>
@@ -502,24 +391,24 @@
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone</label>
+                            <label for="phone">Phone (optional)</label>
                             <input type="tel" id="phone" name="phone">
                         </div>
                         <div class="form-group">
-                            <label for="project">Project Type</label>
+                            <label for="project">Project type</label>
                             <select id="project" name="project">
-                                <option value="">Select a project type</option>
+                                <option value="">Select a project type…</option>
                                 <option value="kitchen">Custom Kitchen</option>
                                 <option value="wardrobe">Fitted Wardrobe</option>
-                                <option value="cabinet">Cabinets & Storage</option>
+                                <option value="cabinet">Cabinets &amp; Storage</option>
                                 <option value="bathroom">Bathroom Joinery</option>
                                 <option value="garden">Garden Building</option>
-                                <option value="other">Other</option>
+                                <option value="other">Something else</option>
                             </select>
                         </div>
                         <div class="form-group full-width">
-                            <label for="message">Tell us about your project</label>
-                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <label for="message">About the project</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Rough size, timeline, anything you've already sketched out…"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                     </form>
@@ -528,13 +417,13 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===== Footer ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
                     <img src="./images/logo.png" alt="Matt Built">
-                    <p>Built for you! Built to last!</p>
+                    <span class="footer-tagline">Built to last.</span>
                 </div>
                 <div class="footer-links">
                     <a href="#home">Home</a>
@@ -543,13 +432,82 @@
                     <a href="#portfolio">Portfolio</a>
                     <a href="#contact">Contact</a>
                 </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2026 Matt Built. All rights reserved.</p>
+                <div class="footer-contact">
+                    <a href="mailto:Matt@MattBuilt.co.uk">Matt@MattBuilt.co.uk</a>
+                    <a href="tel:+447590998782">07590 998 782</a>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="year">2026</span> Matt Built. All rights reserved.</p>
+                <p>Bespoke joinery &amp; carpentry</p>
             </div>
         </div>
     </footer>
 
+    <!-- ===== Tweaks Panel (palette comparison) ===== -->
+    <aside class="tweaks-panel" id="tweaks-panel" aria-hidden="true">
+        <header>
+            <h4>Palette</h4>
+            <button class="close" id="tweaks-close" aria-label="Close">&times;</button>
+        </header>
+        <label>Swap the colour direction</label>
+        <div class="tweak-options">
+            <button class="tweak-opt active" data-palette="workshop">
+                <span class="tweak-swatch" style="background:#c9a227"></span>
+                Workshop
+            </button>
+            <button class="tweak-opt" data-palette="oak">
+                <span class="tweak-swatch" style="background:#b8842a"></span>
+                Oak
+            </button>
+            <button class="tweak-opt" data-palette="charcoal">
+                <span class="tweak-swatch" style="background:#d4ac3e"></span>
+                Charcoal
+            </button>
+            <button class="tweak-opt" data-palette="teal">
+                <span class="tweak-swatch" style="background:#4ecdc4"></span>
+                Original
+            </button>
+        </div>
+    </aside>
+
     <script src="./script.js"></script>
+    <script>
+        // ===== Year stamp =====
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ===== Tweaks (palette swap) =====
+        (function () {
+            const panel = document.getElementById('tweaks-panel');
+            const closeBtn = document.getElementById('tweaks-close');
+            const opts = panel.querySelectorAll('.tweak-opt');
+
+            function setPalette(name) {
+                document.body.setAttribute('data-palette', name);
+                opts.forEach(b => b.classList.toggle('active', b.dataset.palette === name));
+            }
+
+            opts.forEach(b => b.addEventListener('click', () => setPalette(b.dataset.palette)));
+
+            // Tweaks-mode protocol with the host
+            window.addEventListener('message', (e) => {
+                if (!e.data) return;
+                if (e.data.type === '__activate_edit_mode') {
+                    panel.classList.add('open');
+                    panel.setAttribute('aria-hidden', 'false');
+                }
+                if (e.data.type === '__deactivate_edit_mode') {
+                    panel.classList.remove('open');
+                    panel.setAttribute('aria-hidden', 'true');
+                }
+            });
+            closeBtn.addEventListener('click', () => {
+                panel.classList.remove('open');
+                panel.setAttribute('aria-hidden', 'true');
+                try { window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*'); } catch (e) {}
+            });
+            try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch (e) {}
+        })();
+    </script>
 </body>
 </html>

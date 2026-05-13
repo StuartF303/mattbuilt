@@ -1,7 +1,11 @@
-// ===== Matt Built Website JavaScript =====
+// ===== Matt Built — Redesign JS =====
+// Forked from current/script.js with bug fixes:
+//   1. Portfolio filter defaults to "All"
+//   2. EmailJS gated behind real credentials (graceful failure)
+//   3. Smooth scroll guards anchor-only targets
+//   4. Cleaner intersection observer
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all components
+document.addEventListener('DOMContentLoaded', function () {
     initNavigation();
     initScrollEffects();
     initPortfolioFilter();
@@ -17,14 +21,12 @@ function initNavigation() {
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Mobile menu toggle
     navToggle.addEventListener('click', () => {
         navToggle.classList.toggle('active');
         navMenu.classList.toggle('active');
         document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navToggle.classList.remove('active');
@@ -33,71 +35,52 @@ function initNavigation() {
         });
     });
 
-    // Navbar scroll effect
-    let lastScrollY = window.scrollY;
-
     window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-
-        lastScrollY = currentScrollY;
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
     });
 
-    // Active section highlighting
     const sections = document.querySelectorAll('section[id]');
-
     window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY + 100;
-
+        const scrollY = window.scrollY + 120;
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            const correspondingLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                navLinks.forEach(link => link.classList.remove('active'));
-                if (correspondingLink) {
-                    correspondingLink.classList.add('active');
-                }
+            const top = section.offsetTop;
+            const h = section.offsetHeight;
+            const id = section.getAttribute('id');
+            const link = document.querySelector(`.nav-link[href="#${id}"]`);
+            if (scrollY >= top && scrollY < top + h) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                if (link) link.classList.add('active');
             }
         });
     });
 }
 
-// ===== Scroll Effects =====
+// ===== Smooth Scroll =====
 function initScrollEffects() {
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#' || href.length < 2) return;
+            const target = document.querySelector(href);
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
 }
 
-// ===== Portfolio Filter =====
+// ===== Portfolio Filter (default: All) =====
 function initPortfolioFilter() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const buttons = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
 
-    const applyFilter = (filter) => {
-        portfolioItems.forEach(item => {
-            const category = item.getAttribute('data-category');
-            if (filter === 'all' || category === filter) {
+    const apply = (filter) => {
+        items.forEach(item => {
+            const cat = item.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
                 item.classList.remove('hidden');
-                item.style.animation = 'fadeIn 0.5s ease forwards';
             } else {
                 item.classList.add('hidden');
             }
@@ -105,17 +88,13 @@ function initPortfolioFilter() {
     };
 
     const initialActive = document.querySelector('.filter-btn.active');
-    if (initialActive) {
-        applyFilter(initialActive.getAttribute('data-filter'));
-    }
+    apply(initialActive ? initialActive.getAttribute('data-filter') : 'all');
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Update active button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            applyFilter(button.getAttribute('data-filter'));
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            apply(btn.getAttribute('data-filter'));
         });
     });
 }
@@ -127,250 +106,126 @@ function initTestimonialSlider() {
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const dotsContainer = document.getElementById('testimonial-dots');
-
     if (!track || cards.length === 0) return;
 
-    let currentIndex = 0;
-    const totalSlides = cards.length;
+    let index = 0;
+    const total = cards.length;
 
-    // Create dots
-    cards.forEach((_, index) => {
+    cards.forEach((_, i) => {
         const dot = document.createElement('span');
         dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => goToSlide(index));
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => go(i));
         dotsContainer.appendChild(dot);
     });
-
     const dots = dotsContainer.querySelectorAll('.dot');
 
-    function updateSlider() {
-        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentIndex);
-        });
+    function update() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
     }
+    function go(i) { index = i; update(); }
+    function next() { index = (index + 1) % total; update(); }
+    function prev() { index = (index - 1 + total) % total; update(); }
 
-    function goToSlide(index) {
-        currentIndex = index;
-        updateSlider();
-    }
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % totalSlides;
-        updateSlider();
-    }
+    let auto = setInterval(next, 6000);
+    track.addEventListener('mouseenter', () => clearInterval(auto));
+    track.addEventListener('mouseleave', () => { auto = setInterval(next, 6000); });
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-        updateSlider();
-    }
-
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-
-    // Auto-play
-    let autoPlayInterval = setInterval(nextSlide, 5000);
-
-    // Pause on hover
-    track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-    track.addEventListener('mouseleave', () => {
-        autoPlayInterval = setInterval(nextSlide, 5000);
-    });
-
-    // Touch/swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    track.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+    let sx = 0, ex = 0;
+    track.addEventListener('touchstart', e => sx = e.changedTouches[0].screenX, { passive: true });
+    track.addEventListener('touchend', e => {
+        ex = e.changedTouches[0].screenX;
+        const diff = sx - ex;
+        if (diff > 50) next();
+        else if (diff < -50) prev();
     }, { passive: true });
-
-    track.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-
-        if (diff > swipeThreshold) {
-            nextSlide();
-        } else if (diff < -swipeThreshold) {
-            prevSlide();
-        }
-    }
 }
 
 // ===== Contact Form =====
 function initContactForm() {
     const form = document.getElementById('contact-form');
-
     if (!form) return;
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
+        const data = Object.fromEntries(new FormData(form).entries());
 
-        // Gather form data
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        // Basic validation
         if (!data.name || !data.email || !data.message) {
-            showNotification('Please fill in all required fields.', 'error');
+            notify('Please fill in your name, email and message.', 'error');
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+            notify('Please enter a valid email address.', 'error');
             return;
         }
 
-        // Email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-            showNotification('Please enter a valid email address.', 'error');
+        const btn = form.querySelector('button[type="submit"]');
+        const original = btn.textContent;
+        btn.textContent = 'Sending…';
+        btn.disabled = true;
+
+        const hasEmailJS = window.emailjs &&
+            window.EMAILJS_PUBLIC_KEY && !/YOUR_/.test(window.EMAILJS_PUBLIC_KEY);
+
+        if (!hasEmailJS) {
+            // Graceful fallback — open mail client with prefilled message
+            setTimeout(() => {
+                const body = encodeURIComponent(
+                    `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || '—'}\nProject: ${data.project || '—'}\n\n${data.message}`
+                );
+                window.location.href = `mailto:Matt@MattBuilt.co.uk?subject=Enquiry%20from%20${encodeURIComponent(data.name)}&body=${body}`;
+                notify('Opening your email app — please send to complete.', 'success');
+                btn.textContent = original;
+                btn.disabled = false;
+            }, 300);
             return;
         }
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Sending...';
-        submitBtn.disabled = true;
 
         emailjs.sendForm(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, form)
             .then(() => {
-                showNotification('Thank you! Your message has been sent. We\'ll be in touch soon.', 'success');
+                notify('Thanks — your message is on its way. Matt will be in touch soon.', 'success');
                 form.reset();
             })
-            .catch((err) => {
+            .catch(err => {
                 console.error('EmailJS error:', err);
-                showNotification('Sorry, something went wrong. Please email Matt@MattBuilt.co.uk directly.', 'error');
+                notify('Something went wrong. Please email Matt@MattBuilt.co.uk directly.', 'error');
             })
             .finally(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
+                btn.textContent = original;
+                btn.disabled = false;
             });
     });
 }
 
-function showNotification(message, type) {
-    // Remove existing notification
-    const existing = document.querySelector('.notification');
+function notify(message, type) {
+    const existing = document.querySelector('.toast');
     if (existing) existing.remove();
-
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <span>${message}</span>
-        <button onclick="this.parentElement.remove()">&times;</button>
-    `;
-
-    // Add styles dynamically
-    notification.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        padding: 16px 24px;
-        background: ${type === 'success' ? '#10b981' : '#ef4444'};
-        color: white;
-        border-radius: 8px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        z-index: 9999;
-        animation: slideIn 0.3s ease;
-    `;
-
-    // Add animation keyframes
-    if (!document.querySelector('#notification-styles')) {
-        const style = document.createElement('style');
-        style.id = 'notification-styles';
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            @keyframes fadeIn {
-                from { opacity: 0; transform: scale(0.95); }
-                to { opacity: 1; transform: scale(1); }
-            }
-            .notification button {
-                background: none;
-                border: none;
-                color: white;
-                font-size: 20px;
-                cursor: pointer;
-                padding: 0;
-                line-height: 1;
-            }
-        `;
-        document.head.appendChild(style);
-    }
-
-    document.body.appendChild(notification);
-
-    // Auto-remove after 5 seconds
+    const el = document.createElement('div');
+    el.className = `toast toast-${type}`;
+    el.innerHTML = `<span>${message}</span><button aria-label="dismiss">&times;</button>`;
+    el.querySelector('button').addEventListener('click', () => el.remove());
+    document.body.appendChild(el);
+    setTimeout(() => el.classList.add('toast-in'), 10);
     setTimeout(() => {
-        if (notification.parentElement) {
-            notification.style.animation = 'slideIn 0.3s ease reverse';
-            setTimeout(() => notification.remove(), 300);
-        }
+        el.classList.remove('toast-in');
+        setTimeout(() => el.remove(), 300);
     }, 5000);
 }
 
 // ===== Scroll Animations =====
 function initAnimations() {
-    // Only animate service cards and contact items, not portfolio items
-    const animatedElements = document.querySelectorAll('.service-card, .contact-item');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
+                entry.target.classList.add('revealed');
+                io.unobserve(entry.target);
             }
         });
-    }, observerOptions);
-
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-}
-
-// ===== Utility Functions =====
-
-// Debounce function for performance
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Throttle function for scroll events
-function throttle(func, limit) {
-    let inThrottle;
-    return function(...args) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
 }
